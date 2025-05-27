@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Eventos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        AGREGAR EVENTO
+    </header>
+
+    <div class="contenedor-flex">
+
+        <section>
+            <form id="eventForm">
+                <label for="nombre">Nombre del Evento:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" name="fecha" required>
+
+                <label for="hora">Hora:</label>
+                <input type="time" id="hora" name="hora" required>
+
+                <label for="lugar">Lugar:</label>
+                <input type="text" id="lugar" name="lugar" required>
+
+                <button type="submit">Agregar Evento</button>
+            </form>
+        </section>
+
+        <section id="calendar">
+            <h2>Calendario de Eventos</h2>
+            <div id="eventList"></div>
+
+            <div id="calendar-wrap">
+                <div class="calendar">
+
+                    <div class="calendar__col calendar__col--legend">
+                        <div class="calendar__head">
+                            <div class="calendar__head__name">&nbsp;</div>
+                            <div class="calendar__head__date">&nbsp;</div>
+                        </div>
+                        <!-- Horas -->
+                        <div class="calendar__cell calendar__cell--time">08:00</div>
+                        <div class="calendar__cell calendar__cell--time">09:00</div>
+                        <div class="calendar__cell calendar__cell--time">10:00</div>
+                        <div class="calendar__cell calendar__cell--time">11:00</div>
+                        <div class="calendar__cell calendar__cell--time">12:00</div>
+                        <div class="calendar__cell calendar__cell--time">13:00</div>
+                        <div class="calendar__cell calendar__cell--time">14:00</div>
+                        <div class="calendar__cell calendar__cell--time">15:00</div>
+                        <div class="calendar__cell calendar__cell--time">16:00</div>
+                        <div class="calendar__cell calendar__cell--time">17:00</div>
+                        <div class="calendar__cell calendar__cell--time">18:00</div>
+                        <div class="calendar__cell calendar__cell--time">19:00</div>
+                        <div class="calendar__cell calendar__cell--time">20:00</div>
+                        <div class="calendar__cell calendar__cell--time">21:00</div>
+                        <div class="calendar__cell calendar__cell--time">22:00</div>
+                        <div class="calendar__cell calendar__cell--time">23:00</div>
+                    </div>
+
+                    <!-- Lunes -->
+                    <div class="calendar__col">
+                        <div class="calendar__head">
+                            <div class="calendar__head__name">Lunes</div>
+                            <div class="calendar__head__date">11</div>
+                        </div>
+                        <div class="calendar__cell calendar__cell--appointment"></div>
+                        <div class="calendar__cell calendar__cell--appointment"></div>
+                        <div class="calendar__cell calendar__cell--appointment">
+                            <div class="calendar__event calendar__event--duration-180">
+                                <div class="calendar__event--time">10:00 - 13:00</div>
+                                <div class="calendar__event--title">Meeting with Ben</div>
+                            </div>
+                        </div>
+                        <!-- ... celdas vacías -->
+                        <!-- Repetido por simplicidad -->
+                        <!-- ... -->
+                    </div>
+
+                    <!-- martes -->
+                    <div class="calendar__col">
+                        <div class="calendar__head">
+                            <div class="calendar__head__name">Martes</div>
+                            <div class="calendar__head__date">12</div>
+                        </div>
+                        <!-- ... celdas vacías -->
+                    </div>
+
+                    <!-- Miercoles -->
+                    <div class="calendar__col">
+                        <div class="calendar__head">
+                            <div class="calendar__head__name">Miercoles</div>
+                            <div class="calendar__head__date">13</div>
+                        </div>
+                        <div class="calendar__cell calendar__cell--appointment"></div>
+                        <div class="calendar__cell calendar__cell--appointment"></div>
+                        <div class="calendar__cell calendar__cell--appointment"></div>
+                        <div class="calendar__cell calendar__cell--appointment"></div>
+                        <div class="calendar__cell calendar__cell--appointment">
+                            <div class="calendar__event calendar__event--duration-120 calendar__event--past-30">
+                                <div class="calendar__event--time">12:30 - 14:30</div>
+                                <div class="calendar__event--title">Lunch Break</div>
+                            </div>
+                        </div>
+                        <!-- ... celdas vacías -->
+                    </div>
+
+                    <!-- jueves -->
+                    <div class="calendar__col">
+                        <div class="calendar__head">
+                            <div class="calendar__head__name">Jueves</div>
+                            <div class="calendar__head__date">14</div>
+                        </div>
+                        <!-- ... celdas vacías -->
+                    </div>
+
+                    <!-- viernes -->
+                    <div class="calendar__col">
+                        <div class="calendar__head">
+                            <div class="calendar__head__name">Viernes</div>
+                            <div class="calendar__head__date">15</div>
+                        </div>
+                        <!-- ... celdas vacías -->
+                    </div>
+                    
+                    <!-- sabado -->
+                    <div class="calendar__col">
+                        <div class="calendar__head">
+                            <div class="calendar__head__name">Sabado</div>
+                            <div class="calendar__head__date">14</div>
+                        </div>
+                        <!-- ... celdas vacías -->
+                    </div>
+                    
+                    <!-- domingo -->
+                    <div class="calendar__col">
+                        <div class="calendar__head">
+                            <div class="calendar__head__name">Domingo</div>
+                            <div class="calendar__head__date">14</div>
+                        </div>
+                        <!-- ... celdas vacías -->
+                    </div>
+
+                </div><!-- /.calendar -->
+            </div><!-- /#calendar-wrap -->
+        </section>
+
+        <script src="script.js"></script>
+    </div><!-- /.contenedor -->
+
+</body>
+</html>
