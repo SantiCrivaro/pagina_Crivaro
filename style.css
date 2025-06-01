@@ -1,303 +1,184 @@
-body, *, *::before, *::after {
+h1 {
+  text-align: center;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #085b6b;
-    margin: 0;
-    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #006064;
+    color: white;
+    min-height: 100vh;
+    padding: 24px;
 }
 
-h1 {
-    text-align: center;
-    color: #fff;
-    margin-top: 30px;
-    letter-spacing: 2px;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.10);
+.contenedor-calendario {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.contenedor-flex {
+.encabezado {
     display: flex;
-    align-items: flex-start;
-    gap: 40px;
-    justify-content: center;
-    width: 100%;
-    margin: 40px auto 0 auto;
-    max-width: 1300px;
-    padding-left: 24px;
-    padding-right: 24px;
-    box-sizing: border-box;
-}
-
-.formulario {
-    background: #fff;
-    padding: 30px 25px 25px 25px;
-    border-radius: 14px;
-    box-shadow: 0 2px 12px rgba(8, 91, 107, 0.13);
-    min-width: 260px;
-    max-width: 320px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.formulario label {
-    font-weight: bold;
-    color: #085b6b;
-    margin-bottom: 3px;
-}
-
-.formulario input,
-.formulario select {
-    padding: 8px 10px;
-    border: 1px solid #b0bec5;
-    border-radius: 6px;
-    font-size: 1em;
-    margin-bottom: 10px;
-    background: #f8fafc;
-    transition: border 0.2s;
-}
-
-.formulario input:focus,
-.formulario select:focus {
-    border: 1.5px solid #085b6b;
-    outline: none;
-    background: #e0f7fa;
-}
-
-.formulario button {
-    background: #085b6b;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 10px 0;
-    font-size: 1.1em;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background 0.2s;
-    box-shadow: 0 2px 8px rgba(8, 91, 107, 0.10);
-}
-
-.formulario button:hover {
-    background: #1976d2;
-}
-
-.calendario {
-    flex: 1 1 0;
-    max-width: 950px;
-    min-width: 0;
-    width: 100%;
-    background: #fff;
-    border-radius: 14px;
-    box-shadow: 0 2px 12px rgba(8, 91, 107, 0.13);
-    overflow: hidden;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 40px;
-    padding-bottom: 20px;
-    border: 1px solid #e0f7fa;
 }
 
-.fila {
-    display: grid;
-    grid-template-columns: 60px repeat(7, 1fr);
-    border-bottom: 1px solid #e0f7fa;
-    min-height: 48px;
-    background: #fff;
-}
-
-.fila:last-child {
-    border-bottom: none;
-}
-
-.fila.dias {
-    background: #085b6b;
-    color: #fff;
-    font-weight: 400;
-    font-size: 1.1em;
-    border-bottom: 2px solid #e0f7fa;
-}
-
-.fila.dias > div {
-    font-size: 1.2em;
-    font-weight: 500;
-    color: #fff;
-    padding: 18px 0 6px 0;
-    background: #085b6b;
-    border-right: none;
-    letter-spacing: 1px;
-    text-align: center;
-}
-
-.fila.dias > div.hora {
-    background: #085b6b;
-    border-right: none;
-}
-
-.fila > div {
-    padding: 0;
-    border-right: 1px solid #e0f7fa;
-    min-height: 48px;
-    text-align: center;
-    font-size: 1em;
-    position: relative;
-    vertical-align: top;
-    background: #fff;
-}
-
-.fila > div:last-child {
-    border-right: none;
-}
-
-.hora {
-    background: #e0f7fa;
-    color: #085b6b;
-    font-weight: 600;
-    font-size: 1em;
-    border-right: 1px solid #e0f7fa;
-    text-align: right;
-    padding-right: 8px;
-    padding-top: 8px;
-    letter-spacing: 1px;
-}
-
-/* EVENTOS DEL CALENDARIO */
-.evento-tarjeta {
-    background: #085b6b;
-    color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.10);
-    padding: 10px 12px;
-    margin: 4px 4px;
-    font-size: 1em;
-    font-weight: 500;
-    text-align: left;
-    position: absolute;
-    top: 4px;
-    left: 4px;
-    right: 4px;
-    z-index: 2;
-    min-height: 40px;
+.navegacion {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    transition: box-shadow 0.2s;
+    align-items: center;
+    gap: 20px;
 }
 
-.evento-tarjeta:hover {
-    box-shadow: 0 4px 16px rgba(25, 118, 210, 0.18);
+.mes-año {
+    display: flex;
+    align-items: center;
+    gap: 24px;
 }
 
-.evento-tarjeta .hora-evento {
-    font-size: 0.95em;
+.mes {
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+.año {
+    font-size: 24px;
     font-weight: 400;
-    opacity: 0.85;
-    margin-bottom: 2px;
 }
 
-.evento-tarjeta .titulo-evento {
-    font-size: 1.1em;
-    font-weight: bold;
+.contenido {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
 }
 
-.evento-tarjeta .lugar-evento {
-    font-size: 0.95em;
-    opacity: 0.85;
-    margin-top: 2px;
+
+.barra-lateral {
+    padding-right: 20px;
 }
 
-.eliminar-evento {
-    position: absolute;
-    top: 6px;
-    right: 8px;
-    background: #fff;
-    color: #085b6b;
+#botonAgregarEvento {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
     border: none;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
+    color: white;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 40px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: background-color 0.2s;
+}
+
+.boton-agregar-evento:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.mas {
+    font-size: 20px;
     font-weight: bold;
-    font-size: 1em;
-    line-height: 20px;
-    padding: 0;
+}
+
+.fecha-seleccionada {
+    text-align: left;
+}
+
+.dia-grande {
+    font-size: 72px;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.mes-pequeño {
+    font-size: 20px;
+    font-weight: 400;
+    text-transform: capitalize;
+}
+
+/* Cuadrícula del calendario */
+.dias-semana {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.dia-semana {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 12px 0;
+}
+
+.dias-mes {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 16px;
+}
+
+.dia {
+    aspect-ratio: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-@media (max-width: 1100px) {
-    .contenedor-flex {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 30px;
-        max-width: 100vw;
-        padding-left: 8px;
-        padding-right: 8px;
-    }
-    .calendario,
-    .formulario {
-        max-width: 100vw;
-        min-width: 0;
-        width: 100%;
-    }
-}
-
-@media (max-width: 700px) {
-    .fila {
-        grid-template-columns: 40px repeat(7, 1fr);
-        font-size: 0.90em;
-    }
-    .calendario {
-        padding-bottom: 8px;
-    }
-}
-
-/* ...resto de tu CSS... */
-
-.oculto {
-    display: none !important;
-}
-
-/* Botón flotante */
-.boton-flotante {
-    position: fixed;
-    bottom: 32px;
-    right: 32px;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: #085b6b;
-    color: #fff;
-    font-size: 2.2em;
-    border: none;
-    box-shadow: 0 2px 8px rgba(8,91,107,0.18);
+    font-size: 18px;
+    font-weight: 400;
     cursor: pointer;
-    z-index: 1000;
-    transition: background 0.2s;
-}
-.boton-flotante:hover {
-    background: #1976d2;
+    border-radius: 50%;
+    transition: background-color 0.2s;
 }
 
-/* Permite stacking de eventos */
-.evento-tarjeta {
-    background: #085b6b;
-    color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.10);
-    padding: 10px 12px;
-    margin: 4px 4px;
-    font-size: 1em;
-    font-weight: 500;
-    text-align: left;
-    position: static;
-    min-height: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    transition: box-shadow 0.2s;
+.dia:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* ...resto de tu CSS... */
+.dia.seleccionado {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.dia.evento {
+    background-color: rgba(99, 102, 241, 0.8);
+}
+
+.dia.vacio {
+    cursor: default;
+}
+
+.dia.vacio:hover {
+    background-color: transparent;
+}
+
+@media (max-width: 768px) {
+    .contenido {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .encabezado {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+    }
+}

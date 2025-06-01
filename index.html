@@ -3,73 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendario Semanal</title>
+    <title>Calendario Junio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>MI CALENARIO</h1>
-    <div class="contenedor-flex">
-        <div>
-            <form class="formulario oculto" id="formulario-tarea">
-                <label for="evento">Evento:</label>
-                <input type="text" id="evento" name="evento" required>
-                <label for="hora">Hora:</label>
-                <input type="time" id="inicio" name="inicio" placeholder="inicio" required>
-                <input type="time" id="final" name="final" placeholder="final" required>
-                <label for="dia">Día:</label>
-                <select id="dia" name="dia" required>
-                    <option value="">Seleccione un día</option>
-                    <option value="lunes">Lunes</option>
-                    <option value="martes">Martes</option>
-                    <option value="miercoles">Miércoles</option>
-                    <option value="jueves">Jueves</option>
-                    <option value="viernes">Viernes</option>
-                    <option value="sabado">Sábado</option>
-                    <option value="domingo">Domingo</option>
-                </select>
-                <label for="lugar">Lugar:</label>
-                <input type="text" id="lugar" name="lugar" required>
-                <button type="submit">Agregar</button>
-            </form>
-        </div>
-        <div class="calendario">
-            <div class="fila dias">
-                <div class="hora"></div>
-                <div>Lunes</div>
-                <div>Martes</div>
-                <div>Miércoles</div>
-                <div>Jueves</div>
-                <div>Viernes</div>
-                <div>Sábado</div>
-                <div>Domingo</div>
+    <div class="contenedor-calendario">
+        <!-- Encabezado -->
+        <div class="encabezado">
+            <div class="navegacion">
+                <div class="mes-año">
+                    <span class="mes">JUNIO</span>
+                    <span class="año">2025</span>
+                </div>
             </div>
-            <!-- Horas del calendario -->
-            <div class="fila"><div class="hora">01:00</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            <div class="fila"><div class="hora">02:00</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            <div class="fila"><div class="hora">03:00</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            <div class="fila"><div class="hora">04:00</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            <div class="fila"><div class="hora">05:00</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            <div class="fila"><div class="hora">06:00</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            <div class="fila"><div class="hora">07:00</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            <div class="fila"><div class="hora">08:00</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            <div class="fila"><div class="hora">09:00</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            <div class="fila"><div class="hora">10:00</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            <div class="fila"><div class="hora">11:00</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            <div class="fila"><div class="hora">12:00</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            <div class="fila"><div class="hora">13:00</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            <div class="fila"><div class="hora">14:00</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            <div class="fila"><div class="hora">15:00</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            <div class="fila"><div class="hora">16:00</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            <div class="fila"><div class="hora">17:00</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            <div class="fila"><div class="hora">18:00</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            <div class="fila"><div class="hora">19:00</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            <div class="fila"><div class="hora">20:00</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            <div class="fila"><div class="hora">21:00</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            <div class="fila"><div class="hora">22:00</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            <div class="fila"><div class="hora">23:00</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        </div>
+
+        <!-- Contenido principal -->
+        <div class="contenido">
+            <!-- Barra lateral izquierda -->
+            <div class="barra-lateral">
+                <button class="boton-agregar-evento">
+                    <span class="mas">+</span>
+                    AGREGAR EVENTO
+                </button>
+                <div class="fecha-seleccionada">
+                    <div class="dia-grande" id="diaSeleccionado">1</div>
+                    <div class="mes-pequeño">Junio</div>
+                </div>
+            </div>
+
+            <!-- Cuadrícula del calendario -->
+            <div class="cuadricula-calendario">
+                <!-- Días de la semana -->
+                <div class="dias-semana">
+                    <div class="dia-semana">LUN</div>
+                    <div class="dia-semana">MAR</div>
+                    <div class="dia-semana">MIÉ</div>
+                    <div class="dia-semana">JUE</div>
+                    <div class="dia-semana">VIE</div>
+                    <div class="dia-semana">SÁB</div>
+                    <div class="dia-semana">DOM</div>
+                </div>
+
+                <!-- Días del mes -->
+                <div class="dias-mes" id="diasDelMes">
+                    <!-- Se generarán con JavaScript -->
+                </div>
+            </div>
         </div>
     </div>
-    <button id="boton-agregar" class="boton-flotante">+</button>
+
     <script src="script.js"></script>
 </body>
 </html>
