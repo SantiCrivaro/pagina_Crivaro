@@ -116,7 +116,6 @@ body {
     text-transform: capitalize;
 }
 
-/* Cuadrícula del calendario */
 .dias-semana {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -181,4 +180,166 @@ body {
         gap: 20px;
         align-items: flex-start;
     }
+}
+
+
+.etiqueta-oculto {
+  display: none !important;
+}
+
+
+#EtiquetaEvento {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+
+.Etiqueta-contenido {
+  background-color: white;
+  color: black;
+  padding: 30px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  position: relative;
+}
+
+
+.cerrar-etiqueta {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+form label {
+  display: block;
+  margin-top: 12px;
+  font-weight: 500;
+}
+
+form input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.guardar-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #00bcd4;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.guardar-btn:hover {
+  background-color: #0097a7;
+}
+
+.dia.tiene-eventos {
+    background: rgba(224, 242, 241, 0.4); /* verde agua claro con baja opacidad */
+    color: white; /* número blanco */
+    font-weight: 500;
+    box-shadow: none;
+    border: 1px solid rgba(128, 203, 196, 0.3); /* borde suave */
+    border-radius: 50%;
+    position: relative;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.dia.tiene-eventos:hover {
+    background: rgba(178, 223, 219, 0.4); /* hover apenas más visible */
+    transform: scale(1.02);
+}
+
+.dia.tiene-eventos::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    width: 6px;
+    height: 6px;
+    background-color: #00ffdd; /* color original del puntito */
+    border-radius: 50%;
+}
+
+
+/* Estilos para los eventos en la barra lateral */
+.lista-eventos {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.evento-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.evento-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.evento-punto {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 2px;
+}
+
+.evento-detalles {
+    flex: 1;
+}
+
+.evento-nombre {
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 4px;
+}
+
+.evento-horario {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.eliminar-evento {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: transform 0.2s ease;
+}
+
+.eliminar-evento:hover {
+    transform: scale(1.2);
 }

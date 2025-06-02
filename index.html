@@ -5,10 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendario Junio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
 </head>
 <body>
+    <header>
+        <h1> MI CALENDARIO</h1>
+    </header>
     <div class="contenedor-calendario">
-        <!-- Encabezado -->
+
         <div class="encabezado">
             <div class="navegacion">
                 <div class="mes-año">
@@ -18,11 +23,10 @@
             </div>
         </div>
 
-        <!-- Contenido principal -->
         <div class="contenido">
-            <!-- Barra lateral izquierda -->
+
             <div class="barra-lateral">
-                <button class="boton-agregar-evento">
+                <button class="boton animate__animated animate__pulse" id="botonAgregarEvento">
                     <span class="mas">+</span>
                     AGREGAR EVENTO
                 </button>
@@ -32,9 +36,9 @@
                 </div>
             </div>
 
-            <!-- Cuadrícula del calendario -->
+
             <div class="cuadricula-calendario">
-                <!-- Días de la semana -->
+
                 <div class="dias-semana">
                     <div class="dia-semana">LUN</div>
                     <div class="dia-semana">MAR</div>
@@ -45,14 +49,30 @@
                     <div class="dia-semana">DOM</div>
                 </div>
 
-                <!-- Días del mes -->
+   
                 <div class="dias-mes" id="diasDelMes">
-                    <!-- Se generarán con JavaScript -->
+               
                 </div>
             </div>
         </div>
     </div>
-
+    
+    <div id="EtiquetaEvento" class="etiqueta-oculto">
+    <div class="Etiqueta-contenido">
+        <button class="cerrar-etiqueta" id="cerrarEtiqueta"> X </button>
+        <form id="formEvento">
+            <label for="nombreEvento">Nombre del evento: </label>
+            <input type="text" id="nombreEvento" placeholder="Nombre del evento" required>
+            <label for="fechaEvento">Dia: </label>
+            <input type="number" id="fechaEvento" placeholder="Ingrese el dia" required>
+            <label for="inicioEvento">Inicio: </label>
+            <input type="time" id="inicioEvento" placeholder="Ingrese hora de inicio" required>
+            <label for="finEvento">Fin: </label>
+            <input type="time" id="finEvento" placeholder="Ingrese hora de finalización" required>
+        <button type="submit" class="guardar-btn">GUARDAR </button>
+        </form>
+    </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
