@@ -1,156 +1,120 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const añoActual = 2025;
-    const mesActual = 5; 
-    const nombreDelMes = 'junio';
-    
-    let diaActualmenteSeleccionado = 1;
-    let eventosDelCalendario = {}; 
-    
-    const contenedorDiasDelMes = document.getElementById('diasDelMes');
-    const elementoDiaSeleccionado = document.getElementById('diaSeleccionado');
-    
-    function generarCalendario() {
-        contenedorDiasDelMes.innerHTML = '';
-        
-        const primerDiaDelMes = new Date(añoActual, mesActual, 1);
-        const ultimoDiaDelMes = new Date(añoActual, mesActual + 1, 0);
-        const cantidadDiasEnMes = ultimoDiaDelMes.getDate();
-        const primerDiaDeLaSemana = primerDiaDelMes.getDay(); 
-        
-        for (let i = 0; i < primerDiaDeLaSemana; i++) {
-            const diaVacio = document.createElement('div');
-            diaVacio.className = 'dia vacio';
-            contenedorDiasDelMes.appendChild(diaVacio);
-        }
-        
-        for (let numeroDia = 1; numeroDia <= cantidadDiasEnMes; numeroDia++) {
-            const elementoDelDia = document.createElement('div');
-            elementoDelDia.className = 'dia';
-            elementoDelDia.textContent = numeroDia;
-            
-            if (numeroDia === diaActualmenteSeleccionado) {
-                elementoDelDia.classList.add('seleccionado');
-            }
-            
-            if (eventosDelCalendario[numeroDia] && eventosDelCalendario[numeroDia].length > 0) {
-                elementoDelDia.classList.add('tiene-eventos');
-            }
-            
-            elementoDelDia.addEventListener('click', function() {
-                document.querySelectorAll('.dia.seleccionado').forEach(elemento => {
-                    elemento.classList.remove('seleccionado');
-                });
-                
-                elementoDelDia.classList.add('seleccionado');
-                diaActualmenteSeleccionado = numeroDia;
-                
-                actualizarVistaBarraLateral(numeroDia);
-            });
-            
-            contenedorDiasDelMes.appendChild(elementoDelDia);
-        }
-    }
-    
-    function actualizarVistaBarraLateral(dia) {
-        elementoDiaSeleccionado.textContent = dia;
-        
-        const listaEventosAnterior = document.querySelector('.lista-eventos');
-        if (listaEventosAnterior) {
-            listaEventosAnterior.remove();
-        }
-        
-        if (eventosDelCalendario[dia] && eventosDelCalendario[dia].length > 0) {
-            mostrarEventosEnBarraLateral(dia);
-        }
-    }
-    
-    function mostrarEventosEnBarraLateral(dia) {
-        const eventos = eventosDelCalendario[dia];
-        
-        const contenedorEventos = document.createElement('div');
-        contenedorEventos.className = 'lista-eventos';
-        
-        eventos.forEach((evento, index) => {
-            const elementoEvento = document.createElement('div');
-            elementoEvento.className = 'evento-item';
-            elementoEvento.innerHTML = `
-                <div class="evento-punto">•</div>
-                <div class="evento-detalles">
-                    <div class="evento-nombre">${evento.nombre}</div>
-                    <div class="evento-horario">${evento.inicio} - ${evento.fin}</div>
-                </div>
-                <button class="eliminar-evento" data-dia="${dia}" data-index="${index}">✖</button>
-            `;
-            contenedorEventos.appendChild(elementoEvento);
-        });
-        
-        const fechaSeleccionada = document.querySelector('.fecha-seleccionada');
-        fechaSeleccionada.appendChild(contenedorEventos);
-    }
-    
-    generarCalendario();
-    
-    const botonAgregarEvento = document.getElementById('botonAgregarEvento');
-    const etiquetaEvento = document.getElementById('EtiquetaEvento');
-    const cerrarEtiqueta = document.getElementById('cerrarEtiqueta');
+document.addEventListener("DOMContentLoaded", function () {
+  const diasDelMes = document.getElementById("diasDelMes");
+  const botonAgregarEvento = document.getElementById("botonAgregarEvento");
+  const etiquetaEvento = document.getElementById("EtiquetaEvento");
+  const cerrarEtiqueta = document.getElementById("cerrarEtiqueta");
+  const formEvento = document.getElementById("formEvento");
+  const diaSeleccionado = document.getElementById("diaSeleccionado");
+  const eventosDelCalendario = {};
 
-    botonAgregarEvento.addEventListener('click', () => {
-        document.getElementById('fechaEvento').value = diaActualmenteSeleccionado;
-        etiquetaEvento.classList.remove('etiqueta-oculto');
+  let diaActual = 1;
+  let editando = false;
+  let diaEditando = null;
+  let indexEditando = null;
+
+  for (let dia = 1; dia <= 30; dia++) {
+    const divDia = document.createElement("div");
+    divDia.className = "dia";
+    divDia.textContent = dia;
+
+    divDia.addEventListener("click", () => {
+      document.querySelectorAll(".dia").forEach(d => d.classList.remove("seleccionado"));
+      divDia.classList.add("seleccionado");
+      diaActual = dia;
+      diaSeleccionado.textContent = dia;
+      mostrarEventosEnBarraLateral(dia);
     });
 
-    cerrarEtiqueta.addEventListener('click', () => {
-        etiquetaEvento.classList.add('etiqueta-oculto');
-    });
-    
-    const formEvento = document.getElementById('formEvento');
-    formEvento.addEventListener('submit', function(evento) {
-        evento.preventDefault();
-        
-        const nombreEvento = document.getElementById('nombreEvento').value;
-        const diaEvento = parseInt(document.getElementById('fechaEvento').value);
-        const inicioEvento = document.getElementById('inicioEvento').value;
-        const finEvento = document.getElementById('finEvento').value;
-        
-        if (diaEvento < 1 || diaEvento > 30) {
-            alert('Por favor ingresa un día válido (1-30)');
-            return;
-        }
-        
-        if (!eventosDelCalendario[diaEvento]) {
-            eventosDelCalendario[diaEvento] = [];
-        }
-        
-        eventosDelCalendario[diaEvento].push({
-            nombre: nombreEvento,
-            inicio: inicioEvento,
-            fin: finEvento
-        });
-        
-        etiquetaEvento.classList.add('etiqueta-oculto');
-        
-        formEvento.reset();
-        
-        generarCalendario();
-        
-        if (diaEvento === diaActualmenteSeleccionado) {
-            actualizarVistaBarraLateral(diaEvento);
-        }
+    diasDelMes.appendChild(divDia);
+  }
+
+  botonAgregarEvento.addEventListener("click", () => {
+    etiquetaEvento.classList.remove("etiqueta-oculto");
+    document.getElementById("fechaEvento").value = diaActual;
+    formEvento.reset();
+    editando = false;
+  });
+
+  cerrarEtiqueta.addEventListener("click", () => {
+    etiquetaEvento.classList.add("etiqueta-oculto");
+  });
+
+  formEvento.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const nombre = document.getElementById("nombreEvento").value;
+    const dia = parseInt(document.getElementById("fechaEvento").value);
+    const inicio = document.getElementById("inicioEvento").value;
+    const fin = document.getElementById("finEvento").value;
+
+    if (!eventosDelCalendario[dia]) eventosDelCalendario[dia] = [];
+
+    if (editando) {
+      eventosDelCalendario[diaEditando][indexEditando] = { nombre, inicio, fin };
+    } else {
+      eventosDelCalendario[dia].push({ nombre, inicio, fin });
+    }
+
+    formEvento.reset();
+    etiquetaEvento.classList.add("etiqueta-oculto");
+    editando = false;
+
+    const diaElemento = [...diasDelMes.children].find(el => parseInt(el.textContent) === dia);
+    if (diaElemento) diaElemento.classList.add("tiene-eventos");
+
+    if (dia === diaActual) mostrarEventosEnBarraLateral(dia);
+  });
+
+  function mostrarEventosEnBarraLateral(dia) {
+    const eventos = eventosDelCalendario[dia] || [];
+    const contenedor = document.getElementById('eventosDelDia');
+    contenedor.innerHTML = '';
+
+    const lista = document.createElement('div');
+    lista.className = 'lista-eventos';
+
+    eventos.forEach((evento, index) => {
+      const elemento = document.createElement('div');
+      elemento.className = 'evento-item';
+      elemento.innerHTML = `
+        <div class="evento-detalles">
+          <div class="evento-nombre">${evento.nombre}</div>
+          <div class="evento-horario">${evento.inicio} - ${evento.fin}</div>
+        </div>
+        <div class="d-flex flex-column gap-1">
+          <button class="eliminar-evento btn btn-sm btn-danger" data-dia="${dia}" data-index="${index}"> x </button>
+          <button class="editar-evento btn btn-sm btn-warning text-dark" data-dia="${dia}" data-index="${index}">editar</button>
+        </div>
+      `;
+      lista.appendChild(elemento);
     });
 
-    document.addEventListener('click', function (e) {
-        if (e.target.classList.contains('eliminar-evento')) {
-            const dia = parseInt(e.target.getAttribute('data-dia'));
-            const index = parseInt(e.target.getAttribute('data-index'));
-            
-            eventosDelCalendario[dia].splice(index, 1);
-            
-            if (eventosDelCalendario[dia].length === 0) {
-                delete eventosDelCalendario[dia];
-            }
-            
-            actualizarVistaBarraLateral(dia);
-            generarCalendario();
-        }
+    contenedor.appendChild(lista);
+
+    document.querySelectorAll(".eliminar-evento").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const dia = parseInt(btn.getAttribute("data-dia"));
+        const index = parseInt(btn.getAttribute("data-index"));
+        eventosDelCalendario[dia].splice(index, 1);
+        mostrarEventosEnBarraLateral(dia);
+      });
     });
+
+    document.querySelectorAll(".editar-evento").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const dia = parseInt(btn.getAttribute("data-dia"));
+        const index = parseInt(btn.getAttribute("data-index"));
+        const evento = eventosDelCalendario[dia][index];
+
+        document.getElementById("nombreEvento").value = evento.nombre;
+        document.getElementById("fechaEvento").value = dia;
+        document.getElementById("inicioEvento").value = evento.inicio;
+        document.getElementById("finEvento").value = evento.fin;
+
+        etiquetaEvento.classList.remove("etiqueta-oculto");
+        editando = true;
+        diaEditando = dia;
+        indexEditando = index;
+      });
+    });
+  }
 });

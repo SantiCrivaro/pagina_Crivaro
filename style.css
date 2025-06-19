@@ -1,192 +1,12 @@
-h1 {
-  text-align: center;
-  color: white;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  position: relative;
-}
-
-h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin: 0;
-  letter-spacing: 2px;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: #006064;
-    color: white;
-    min-height: 100vh;
-    padding: 24px;
+  background: #006064;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
 }
-
-.contenedor-calendario {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.encabezado {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
-}
-
-.navegacion {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.mes-año {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-}
-
-.mes {
-    font-size: 24px;
-    font-weight: 500;
-    letter-spacing: 2px;
-}
-
-.año {
-    font-size: 24px;
-    font-weight: 400;
-}
-
-.contenido {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 60px;
-}
-
-
-.barra-lateral {
-    padding-right: 20px;
-}
-
-#botonAgregarEvento {
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: none;
-    color: white;
-    padding: 16px;
-    border-radius: 8px;
-    margin-bottom: 40px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    transition: background-color 0.2s;
-}
-
-.boton-agregar-evento:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-.mas {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.fecha-seleccionada {
-    text-align: left;
-}
-
-.dia-grande {
-    font-size: 72px;
-    font-weight: 300;
-    line-height: 1;
-    margin-bottom: 8px;
-}
-
-.mes-pequeño {
-    font-size: 20px;
-    font-weight: 400;
-    text-transform: capitalize;
-}
-
-.dias-semana {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 16px;
-    margin-bottom: 20px;
-}
-
-.dia-semana {
-    text-align: center;
-    font-size: 14px;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.7);
-    padding: 12px 0;
-}
-
-.dias-mes {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 16px;
-}
-
-.dia {
-    aspect-ratio: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    font-weight: 400;
-    cursor: pointer;
-    border-radius: 50%;
-    transition: background-color 0.2s;
-}
-
-.dia:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.dia.seleccionado {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-.dia.evento {
-    background-color: rgba(99, 102, 241, 0.8);
-}
-
-.dia.vacio {
-    cursor: default;
-}
-
-.dia.vacio:hover {
-    background-color: transparent;
-}
-
-@media (max-width: 768px) {
-    .contenido {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    
-    .encabezado {
-        flex-direction: column;
-        gap: 20px;
-        align-items: flex-start;
-    }
-}
-
 
 .etiqueta-oculto {
   display: none !important;
 }
-
 
 #EtiquetaEvento {
   position: fixed;
@@ -201,7 +21,6 @@ body {
   z-index: 999;
 }
 
-
 .Etiqueta-contenido {
   background-color: white;
   color: black;
@@ -213,7 +32,6 @@ body {
   position: relative;
 }
 
-
 .cerrar-etiqueta {
   position: absolute;
   top: 12px;
@@ -224,7 +42,6 @@ body {
   font-weight: bold;
   cursor: pointer;
 }
-
 
 form label {
   display: block;
@@ -250,96 +67,88 @@ form input {
   color: white;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
 .guardar-btn:hover {
   background-color: #0097a7;
 }
 
+.dia {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 400;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+  color: white;
+}
+
+.dia:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dia.seleccionado {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
 .dia.tiene-eventos {
-    background: rgba(224, 242, 241, 0.4); /* verde agua claro con baja opacidad */
-    color: white; /* número blanco */
-    font-weight: 500;
-    box-shadow: none;
-    border: 1px solid rgba(128, 203, 196, 0.3); /* borde suave */
-    border-radius: 50%;
-    position: relative;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+  background: rgba(224, 242, 241, 0.4);
+  color: white;
+  font-weight: 500;
+  border: 1px solid rgba(128, 203, 196, 0.3);
+  border-radius: 50%;
+  position: relative;
 }
 
 .dia.tiene-eventos:hover {
-    background: rgba(178, 223, 219, 0.4); /* hover apenas más visible */
-    transform: scale(1.02);
+  background: rgba(178, 223, 219, 0.4);
+  transform: scale(1.02);
 }
 
 .dia.tiene-eventos::after {
-    content: '';
-    position: absolute;
-    bottom: 4px;
-    right: 4px;
-    width: 6px;
-    height: 6px;
-    background-color: #00ffdd; /* color original del puntito */
-    border-radius: 50%;
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 6px;
+  height: 6px;
+  background-color: #ffae00;
+  border-radius: 50%;
 }
 
-
-/* Estilos para los eventos en la barra lateral */
 .lista-eventos {
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 12px;
 }
 
 .evento-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 15px;
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    transition: background-color 0.2s;
-}
-
-.evento-item:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.evento-punto {
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 2px;
-}
-
-.evento-detalles {
-    flex: 1;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
 }
 
 .evento-nombre {
-    font-size: 16px;
-    font-weight: 500;
-    color: white;
-    margin-bottom: 4px;
+  font-weight: 500;
+  color: white;
 }
 
 .evento-horario {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .eliminar-evento {
-    background: transparent;
-    border: none;
-    color: #ffffff;
-    font-size: 16px;
-    cursor: pointer;
-    margin-left: 10px;
-    transition: transform 0.2s ease;
-}
-
-.eliminar-evento:hover {
-    transform: scale(1.2);
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
 }

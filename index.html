@@ -1,78 +1,72 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendario Junio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calendario Junio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header>
-        <h1> MI CALENDARIO</h1>
+  <div class="container py-4">
+    <header class="text-center mb-4">
+      <h1 class="fw-bold text-white">MI CALENDARIO</h1>
     </header>
-    <div class="contenedor-calendario">
 
-        <div class="encabezado">
-            <div class="navegacion">
-                <div class="mes-año">
-                    <span class="mes">JUNIO</span>
-                    <span class="año">2025</span>
-                </div>
-            </div>
+    <div class="row">
+      <div class="col-md-4">
+        <button class="btn btn-outline-light w-100 d-flex align-items-center gap-2 animate__animated animate__pulse mb-4" id="botonAgregarEvento">
+          <span class="fs-5 fw-bold">+</span>
+          AGREGAR EVENTO
+        </button>
+
+        <div class="text-start mb-3">
+          <div class="display-4 text-white" id="diaSeleccionado">1</div>
+          <div class="fs-5 text-capitalize text-white">Junio</div>
         </div>
 
-        <div class="contenido">
+        <div id="eventosDelDia"></div>
+      </div>
 
-            <div class="barra-lateral">
-                <button class="boton animate__animated animate__pulse" id="botonAgregarEvento">
-                    <span class="mas">+</span>
-                    AGREGAR EVENTO
-                </button>
-                <div class="fecha-seleccionada">
-                    <div class="dia-grande" id="diaSeleccionado">1</div>
-                    <div class="mes-pequeño">Junio</div>
-                </div>
-            </div>
-
-
-            <div class="cuadricula-calendario">
-
-                <div class="dias-semana">
-                    <div class="dia-semana">LUN</div>
-                    <div class="dia-semana">MAR</div>
-                    <div class="dia-semana">MIÉ</div>
-                    <div class="dia-semana">JUE</div>
-                    <div class="dia-semana">VIE</div>
-                    <div class="dia-semana">SÁB</div>
-                    <div class="dia-semana">DOM</div>
-                </div>
-
-   
-                <div class="dias-mes" id="diasDelMes">
-               
-                </div>
-            </div>
+      <div class="col-md-8">
+        <div class="text-center mb-3 text-white">
+          <span class="fs-3 fw-semibold">JUNIO</span>
+          <span class="fs-4">2025</span>
         </div>
+
+        <div class="dias-semana d-grid mb-2" style="grid-template-columns: repeat(7, 1fr);">
+          <div class="text-center text-white">LUN</div>
+          <div class="text-center text-white">MAR</div>
+          <div class="text-center text-white">MIÉ</div>
+          <div class="text-center text-white">JUE</div>
+          <div class="text-center text-white">VIE</div>
+          <div class="text-center text-white">SÁB</div>
+          <div class="text-center text-white">DOM</div>
+        </div>
+
+        <div class="dias-mes d-grid" id="diasDelMes" style="grid-template-columns: repeat(7, 1fr); gap: 10px;"></div>
+      </div>
     </div>
-    
-    <div id="EtiquetaEvento" class="etiqueta-oculto">
+  </div>
+
+  <div id="EtiquetaEvento" class="etiqueta-oculto">
     <div class="Etiqueta-contenido">
-        <button class="cerrar-etiqueta" id="cerrarEtiqueta"> X </button>
-        <form id="formEvento">
-            <label for="nombreEvento">Nombre del evento: </label>
-            <input type="text" id="nombreEvento" placeholder="Nombre del evento" required>
-            <label for="fechaEvento">Dia: </label>
-            <input type="number" id="fechaEvento" placeholder="Ingrese el dia" required>
-            <label for="inicioEvento">Inicio: </label>
-            <input type="time" id="inicioEvento" placeholder="Ingrese hora de inicio" required>
-            <label for="finEvento">Fin: </label>
-            <input type="time" id="finEvento" placeholder="Ingrese hora de finalización" required>
-        <button type="submit" class="guardar-btn">GUARDAR </button>
-        </form>
+      <button class="cerrar-etiqueta" id="cerrarEtiqueta"> X </button>
+      <form id="formEvento">
+        <label for="nombreEvento">Nombre del evento: </label>
+        <input type="text" id="nombreEvento" required />
+        <label for="fechaEvento">Día: </label>
+        <input type="number" id="fechaEvento" required />
+        <label for="inicioEvento">Inicio: </label>
+        <input type="time" id="inicioEvento" required />
+        <label for="finEvento">Fin: </label>
+        <input type="time" id="finEvento" required />
+        <button type="submit" class="guardar-btn">GUARDAR</button>
+      </form>
     </div>
-    </div>
-    <script src="script.js"></script>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
