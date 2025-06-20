@@ -131,7 +131,7 @@ form input {
   border-radius: 8px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   margin-bottom: 10px;
 }
 
@@ -145,10 +145,21 @@ form input {
   color: rgba(255, 255, 255, 0.7);
 }
 
-.eliminar-evento {
-  background: transparent;
+.eliminar-evento,
+.editar-evento {
+background-color: rgba(0, 188, 212, 0.15);
   border: none;
-  color: white;
-  font-size: 1rem;
+  color: #fefefe;
+  font-weight: bold;
+  font-size: 0.8rem;
+  border-radius: 20px;
+  padding: 4px 12px;
+  margin-right: 6px;
   cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.eliminar-evento:hover,
+.editar-evento:hover {
+   background-color: rgba(0, 188, 212, 0.3);
 }
