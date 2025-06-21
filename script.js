@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const cerrarEtiqueta = document.getElementById("cerrarEtiqueta");
   const formEvento = document.getElementById("formEvento");
   const diaSeleccionado = document.getElementById("diaSeleccionado");
+  const inicioEventoInput = document.getElementById("inicioEvento");
+  const finEventoInput = document.getElementById("finEvento");
 
   // --- Persistencia con localStorage ---
   let eventosDelCalendario = {};
@@ -45,6 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("fechaEvento").value = diaActual;
     formEvento.reset();
     editando = false;
+    // Restablecer el mínimo de fin
+    finEventoInput.min = "";
   });
 
   // Cerrar el formulario
@@ -57,8 +61,8 @@ document.addEventListener("DOMContentLoaded", function () {
     e.preventDefault();
     const nombre = document.getElementById("nombreEvento").value;
     const dia = parseInt(document.getElementById("fechaEvento").value);
-    const inicio = document.getElementById("inicioEvento").value;
-    const fin = document.getElementById("finEvento").value;
+    const inicio = inicioEventoInput.value;
+    const fin = finEventoInput.value;
 
     if (!eventosDelCalendario[dia]) eventosDelCalendario[dia] = [];
 
@@ -139,8 +143,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         document.getElementById("nombreEvento").value = evento.nombre;
         document.getElementById("fechaEvento").value = dia;
-        document.getElementById("inicioEvento").value = evento.inicio;
-        document.getElementById("finEvento").value = evento.fin;
+        inicioEventoInput.value = evento.inicio;
+        finEventoInput.value = evento.fin;
+        // Ajustar el mínimo de fin al editar
+        finEventoInput.min = evento.inicio;
 
         etiquetaEvento.classList.remove("etiqueta-oculto");
         editando = true;
