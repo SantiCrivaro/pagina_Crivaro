@@ -41,6 +41,14 @@ document.addEventListener("DOMContentLoaded", function () {
     diasDelMes.appendChild(divDia);
   }
 
+  // --- BLOQUE SIMPLE PARA VALIDAR HORARIOS ---
+  inicioEventoInput.addEventListener("input", function () {
+    finEventoInput.min = inicioEventoInput.value;
+    if (finEventoInput.value < inicioEventoInput.value) {
+      finEventoInput.value = inicioEventoInput.value;
+    }
+  });
+
   // Abrir el formulario para agregar eventos
   botonAgregarEvento.addEventListener("click", () => {
     etiquetaEvento.classList.remove("etiqueta-oculto");
@@ -63,6 +71,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const dia = parseInt(document.getElementById("fechaEvento").value);
     const inicio = inicioEventoInput.value;
     const fin = finEventoInput.value;
+
+    // Validación simple: no permitir fin < inicio
+    if (fin < inicio) {
+      finEventoInput.setCustomValidity("La hora de fin debe ser igual o posterior a la de inicio.");
+      finEventoInput.reportValidity();
+      return;
+    }
+    finEventoInput.setCustomValidity("");
 
     if (!eventosDelCalendario[dia]) eventosDelCalendario[dia] = [];
 
@@ -104,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
         <div class="d-flex gap-2">
           <button class="editar-evento" data-dia="${dia}" data-index="${index}"> EDITAR </button>
-          <button class="eliminar-evento" data-dia="${dia}" data-index="${index}">✖</button>
+          <button class="eliminar-evento" data-dia="${dia}" data-index="${index}"> X </button>
         </div>
       `;
       lista.appendChild(elemento);
