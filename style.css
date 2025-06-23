@@ -14,7 +14,7 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: #00000099; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,7 +28,7 @@ body {
   border-radius: 12px;
   width: 100%;
   max-width: 400px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 24px #00000040;
   position: relative;
 }
 
@@ -87,24 +87,24 @@ form input {
 }
 
 .dia:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #ffffff1a; 
 }
 
 .dia.seleccionado {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: #ffffff33;
 }
 
 .dia.tiene-eventos {
-  background: rgba(224, 242, 241, 0.4);
+  background: #e0f2f166; 
   color: white;
   font-weight: 500;
-  border: 1px solid rgba(128, 203, 196, 0.3);
+  border: 1px solid #80cbc94d; 
   border-radius: 50%;
   position: relative;
 }
 
 .dia.tiene-eventos:hover {
-  background: rgba(178, 223, 219, 0.4);
+  background: #b2dfdb66;
   transform: scale(1.02);
 }
 
@@ -121,12 +121,12 @@ form input {
 
 .lista-eventos {
   margin-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid #ffffff33; 
   padding-top: 12px;
 }
 
 .evento-item {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: #ffffff0d;
   padding: 10px;
   border-radius: 8px;
   display: flex;
@@ -142,12 +142,12 @@ form input {
 
 .evento-horario {
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: #ffffffb3; 
 }
 
 .eliminar-evento,
 .editar-evento {
-background-color: rgba(0, 188, 212, 0.15);
+  background-color: #00bcd426; 
   border: none;
   color: #fefefe;
   font-weight: bold;
@@ -161,5 +161,5 @@ background-color: rgba(0, 188, 212, 0.15);
 
 .eliminar-evento:hover,
 .editar-evento:hover {
-   background-color: rgba(0, 188, 212, 0.3);
+  background-color: #00bcd44d; 
 }
