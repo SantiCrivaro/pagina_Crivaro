@@ -221,4 +221,34 @@ form input {
   .guardar-btn {
     font-size: 0.98rem;
   }
-    
+
+  .evento-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .Etiqueta-contenido {
+    max-width: 99vw;
+    padding: 6px 2px;
+    font-size: 0.93rem;
+    border-radius: 10px;
+    margin: 2px;
+    max-height: 96vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+  }
+  form label,
+  form input,
+  .guardar-btn {
+    font-size: 0.92rem;
+  }
+  .dia {
+    font-size: 11px;
+    min-width: 22px;
+    min-height: 22px;
+  }
+}
