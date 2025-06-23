@@ -174,26 +174,64 @@ form input {
 .dia-vacia:hover {
   background: transparent;
 }
+@media (max-width: 900px) {
+  .Etiqueta-contenido {
+    max-width: 98vw;
+    padding: 16px;
+    font-size: 1rem;
+  }
+  form label,
+  form input,
+  .guardar-btn {
+    font-size: 1rem;
+  }
+}
 
 @media (max-width: 600px) {
   .dias-mes, .dias-semana {
     gap: 4px !important;
   }
- 
+
   .dia {
-    font-size: 14px;
-    min-width: 32px;
-    min-height: 32px;
+    font-size: 13px;
+    min-width: 28px;
+    min-height: 28px;
   }
- 
+
   .Etiqueta-contenido {
-    padding: 12px;
-    max-width: 95vw;
+    padding: 8px;
+    max-width: 99vw;
+    font-size: 0.98rem;
+  }
+
+  form label,
+  form input,
+  .guardar-btn {
+    font-size: 0.98rem;
   }
 
   .evento-item {
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .Etiqueta-contenido {
+    padding: 4px;
+    max-width: 100vw;
+    font-size: 0.92rem;
+  }
+  form label,
+  form input,
+  .guardar-btn {
+    font-size: 0.92rem;
+  }
+  .dia {
+    font-size: 11px;
+    min-width: 22px;
+    min-height: 22px;
   }
 }
