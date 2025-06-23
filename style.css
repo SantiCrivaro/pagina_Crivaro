@@ -176,15 +176,13 @@ form input {
 }
 @media (max-width: 900px) {
   .Etiqueta-contenido {
-    max-width: 90vw;
-    min-width: 260px;
-    padding: 16px 10px;
-    font-size: 1rem;
-    border-radius: 14px;
+    max-width: 96vw;
+    min-width: 0;
     margin: 16px;
+    padding: 20px 8px;
+    border-radius: 14px;
+    font-size: 1rem;
     max-height: 90vh;
-    overflow-y: auto;
-    box-sizing: border-box;
   }
   form label,
   form input,
