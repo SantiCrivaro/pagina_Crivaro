@@ -22,6 +22,13 @@ document.addEventListener("DOMContentLoaded", function () {
   let diaEditando = null;
   let indexEditando = null;
 
+  // Agrega 6 celdas vacías para que el día 1 caiga en domingo (última columna)
+  for (let i = 0; i < 6; i++) {
+    const emptyDiv = document.createElement("div");
+    emptyDiv.className = "dia dia-vacia";
+    diasDelMes.appendChild(emptyDiv);
+  }
+
   for (let dia = 1; dia <= 30; dia++) {
     const divDia = document.createElement("div");
     divDia.className = "dia";
@@ -54,6 +61,13 @@ document.addEventListener("DOMContentLoaded", function () {
     etiquetaEvento.classList.add("etiqueta-oculto");
   });
 
+  inicioEventoInput.addEventListener("input", function () {
+    finEventoInput.min = inicioEventoInput.value;
+    if (finEventoInput.value < inicioEventoInput.value) {
+      finEventoInput.value = inicioEventoInput.value;
+    }
+  });
+
   formEvento.addEventListener("submit", function (e) {
     e.preventDefault();
     const nombre = document.getElementById("nombreEvento").value;
@@ -61,13 +75,23 @@ document.addEventListener("DOMContentLoaded", function () {
     const inicio = inicioEventoInput.value;
     const fin = finEventoInput.value;
 
-    const inicioHora = new Date(`2000-01-01T${inicio}:00`);
-    const finHora = new Date(`2000-01-01T${fin}:00`);
+    // Validación para el día
+    if (dia < 1 || dia > 30) {
+      const fechaEventoInput = document.getElementById("fechaEvento");
+      fechaEventoInput.setCustomValidity("junio tiene solo 30 dias");
+      fechaEventoInput.reportValidity();
+      return;
+    } else {
+      document.getElementById("fechaEvento").setCustomValidity("");
+    }
 
-    if (finHora <= inicioHora) {
-      alert("La hora de fin debe ser al menos 1 minuto posterior a la de inicio.");
+    // Validación de horario
+    if (fin < inicio) {
+      finEventoInput.setCustomValidity("La hora de fin debe ser igual o posterior a la de inicio.");
+      finEventoInput.reportValidity();
       return;
     }
+    finEventoInput.setCustomValidity("");
 
     if (!eventosDelCalendario[dia]) eventosDelCalendario[dia] = [];
 
