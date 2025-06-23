@@ -163,3 +163,14 @@ form input {
 .editar-evento:hover {
   background-color: #00bcd44d; 
 }
+
+.dia-vacia {
+  background: transparent;
+  border: none;
+  cursor: default;
+  box-shadow: none;
+}
+
+.dia-vacia:hover {
+  background: transparent;
+}
