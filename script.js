@@ -75,22 +75,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const inicio = inicioEventoInput.value;
     const fin = finEventoInput.value;
 
-    if (fin < inicio) {
-      finEventoInput.setCustomValidity("La hora de fin debe ser igual o posterior a la de inicio.");
-      finEventoInput.reportValidity();
-      return;
-    }
-    finEventoInput.setCustomValidity("");
-
-    if (dia < 1 || dia > 30) {
-      const fechaEventoInput = document.getElementById("fechaEvento");
-      fechaEventoInput.setCustomValidity("junio tiene solo 30 dias");
-      fechaEventoInput.reportValidity();
-      return;
-    } else {
-      document.getElementById("fechaEvento").setCustomValidity("");
-    }
-
     if (editando) {
       if (dia !== diaEditando) {
 
