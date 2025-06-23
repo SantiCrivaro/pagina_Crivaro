@@ -176,9 +176,15 @@ form input {
 }
 @media (max-width: 900px) {
   .Etiqueta-contenido {
-    max-width: 98vw;
-    padding: 16px;
+    max-width: 90vw;
+    min-width: 260px;
+    padding: 16px 10px;
     font-size: 1rem;
+    border-radius: 14px;
+    margin: 16px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-sizing: border-box;
   }
   form label,
   form input,
@@ -199,9 +205,15 @@ form input {
   }
 
   .Etiqueta-contenido {
-    padding: 8px;
-    max-width: 99vw;
-    font-size: 0.98rem;
+    max-width: 96vw;
+    min-width: 0;
+    padding: 12px 4px;
+    font-size: 0.97rem;
+    border-radius: 12px;
+    margin: 8px;
+    max-height: 92vh;
+    overflow-y: auto;
+    box-sizing: border-box;
   }
 
   form label,
@@ -209,29 +221,4 @@ form input {
   .guardar-btn {
     font-size: 0.98rem;
   }
-
-  .evento-item {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-    font-size: 0.95rem;
-  }
-}
-
-@media (max-width: 400px) {
-  .Etiqueta-contenido {
-    padding: 4px;
-    max-width: 100vw;
-    font-size: 0.92rem;
-  }
-  form label,
-  form input,
-  .guardar-btn {
-    font-size: 0.92rem;
-  }
-  .dia {
-    font-size: 11px;
-    min-width: 22px;
-    min-height: 22px;
-  }
-}
+    
