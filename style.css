@@ -288,3 +288,17 @@ form input {
     padding: 0;
   }
 }
+
+@media (max-height: 450px) {
+  #EtiquetaEvento {
+    padding: 2vw 0;
+  }
+  .Etiqueta-contenido {
+    max-width: 360px;
+    margin: 0 2vw;
+    padding: 10px 4px;
+    border-radius: 10px;
+    font-size: 0.93rem;
+    max-height: 88vh;
+  }
+}
