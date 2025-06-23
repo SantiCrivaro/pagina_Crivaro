@@ -9,13 +9,13 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="container py-4">
-    <header class="text-center mb-4">
-      <h1 class="fw-bold text-white">MI CALENDARIO</h1>
-    </header>
+  <header class="text-center mb-4">
+    <h1 class="fw-bold text-white">MI CALENDARIO</h1>
+  </header>
 
+  <main class="container py-4">
     <div class="row">
-      <div class="col-12 col-md-4 mb-4">
+      <aside class="col-12 col-md-4 mb-4">
         <button class="btn btn-outline-light w-100 d-flex align-items-center gap-2 animate__animated animate__pulse mb-4" id="botonAgregarEvento">
           <span class="fs-5 fw-bold">+</span>
           AGREGAR EVENTO
@@ -27,9 +27,9 @@
         </div>
 
         <div id="eventosDelDia"></div>
-      </div>
+      </aside>
 
-      <div class="col-12 col-md-8">
+      <section class="col-12 col-md-8">
         <div class="text-center mb-3 text-white">
           <span class="fs-3 fw-semibold">JUNIO</span>
           <span class="fs-4">2025</span>
@@ -46,19 +46,18 @@
         </div>
 
         <div class="dias-mes d-grid" id="diasDelMes" style="grid-template-columns: repeat(7, 1fr); gap: 10px;"></div>
-      </div>
+      </section>
     </div>
   </main>
 
-  
-  <div id="EtiquetaEvento" class="etiqueta-oculto">
+  <aside id="EtiquetaEvento" class="etiqueta-oculto">
     <div class="Etiqueta-contenido">
       <button class="cerrar-etiqueta" id="cerrarEtiqueta"> X </button>
       <form id="formEvento">
         <label for="nombreEvento">Nombre del evento: </label>
         <input type="text" id="nombreEvento" required />
         <label for="fechaEvento">Día: </label>
-        <input type="number" id="fechaEvento"  min="1" max="30" required/>
+        <input type="number" id="fechaEvento" required />
         <label for="inicioEvento">Inicio: </label>
         <input type="time" id="inicioEvento" required />
         <label for="finEvento">Fin: </label>
@@ -66,7 +65,7 @@
         <button type="submit" class="guardar-btn">GUARDAR</button>
       </form>
     </div>
-  </div>
+  </aside>
 
   <script src="script.js"></script>
 </body>

@@ -17,12 +17,23 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem("eventosDelCalendario", JSON.stringify(eventosDelCalendario));
   }
 
+  // Utilidad para obtener el div de un día por su número usando un for
+  function buscarElementoDia(dia) {
+    let diaElemento = null;
+    for (let el of diasDelMes.children) {
+      if (parseInt(el.textContent) === dia) {
+        diaElemento = el;
+        break;
+      }
+    }
+    return diaElemento;
+  }
+
   let diaActual = 1;
   let editando = false;
   let diaEditando = null;
   let indexEditando = null;
 
-  
   for (let i = 0; i < 6; i++) {
     const emptyDiv = document.createElement("div");
     emptyDiv.className = "dia dia-vacia";
@@ -77,10 +88,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (editando) {
       if (dia !== diaEditando) {
-
         eventosDelCalendario[diaEditando].splice(indexEditando, 1);
         if (eventosDelCalendario[diaEditando].length === 0) {
-          delete eventosDelCalendario[diaEditando];          const diaAnteriorElemento = [...diasDelMes.children].find(el => parseInt(el.textContent) === diaEditando);
+          delete eventosDelCalendario[diaEditando];
+          const diaAnteriorElemento = buscarElementoDia(diaEditando);
           if (diaAnteriorElemento) diaAnteriorElemento.classList.remove("tiene-eventos");
         }
 
@@ -100,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
     etiquetaEvento.classList.add("etiqueta-oculto");
     editando = false;
 
-    const diaElemento = [...diasDelMes.children].find(el => parseInt(el.textContent) === dia);
+    const diaElemento = buscarElementoDia(dia);
     if (diaElemento) diaElemento.classList.add("tiene-eventos");
 
     if (dia === diaActual) mostrarEventosEnBarraLateral(dia);
@@ -145,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
         guardarEventos();
 
         mostrarEventosEnBarraLateral(dia);
-        const diaElemento = [...diasDelMes.children].find(el => parseInt(el.textContent) === dia);
+        const diaElemento = buscarElementoDia(dia);
         if (diaElemento && eventosDelCalendario[dia] === undefined) {
           diaElemento.classList.remove("tiene-eventos");
         }

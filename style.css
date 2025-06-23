@@ -174,3 +174,26 @@ form input {
 .dia-vacia:hover {
   background: transparent;
 }
+
+@media (max-width: 600px) {
+  .dias-mes, .dias-semana {
+    gap: 4px !important;
+  }
+ 
+  .dia {
+    font-size: 14px;
+    min-width: 32px;
+    min-height: 32px;
+  }
+ 
+  .Etiqueta-contenido {
+    padding: 12px;
+    max-width: 95vw;
+  }
+
+  .evento-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
