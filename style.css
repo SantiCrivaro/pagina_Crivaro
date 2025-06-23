@@ -8,7 +8,6 @@ body {
   display: none !important;
 }
 
-/* MODAL: FONDO OSCURO Y CENTRADO SIEMPRE */
 #EtiquetaEvento {
   position: fixed;
   top: 0;
@@ -25,7 +24,6 @@ body {
   box-sizing: border-box;
 }
 
-/* MODAL CONTENIDO: SIEMPRE CENTRADO Y SIN MARGEN LATERAL */
 .Etiqueta-contenido {
   background-color: white;
   color: black;
@@ -146,6 +144,9 @@ form input {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+  font-weight: 500;
+  color: white;
+  font-size: 1rem;
 }
 
 .evento-nombre {
@@ -188,7 +189,13 @@ form input {
   background: transparent;
 }
 
-/* TABLET Y PANTALLAS MEDIANAS */
+.dias-semana > div {
+  font-size: 15px;
+  font-weight: 500;
+  padding: 2px 0;
+  letter-spacing: 1px;
+}
+
 @media (max-width: 900px) {
   #EtiquetaEvento {
     padding-left: 3vw;
@@ -206,9 +213,12 @@ form input {
   .guardar-btn {
     font-size: 1rem;
   }
+  .dias-semana > div {
+    font-size: 13px;
+    padding: 1px 0;
+  }
 }
 
-/* CELULARES */
 @media (max-width: 600px) {
   #EtiquetaEvento {
     padding-left: 2vw;
@@ -242,9 +252,12 @@ form input {
     gap: 6px;
     font-size: 0.95rem;
   }
+  .dias-semana > div {
+    font-size: 11px;
+    padding: 0;
+  }
 }
 
-/* CELULARES MUY PEQUEÑOS Y PAISAJE */
 @media (max-width: 400px), (max-height: 400px) {
   #EtiquetaEvento {
     padding-left: 1vw;
@@ -269,5 +282,9 @@ form input {
     font-size: 11px;
     min-width: 22px;
     min-height: 22px;
+  }
+  .dias-semana > div {
+    font-size: 9px;
+    padding: 0;
   }
 }

@@ -8,16 +8,18 @@ document.addEventListener("DOMContentLoaded", function () {
   const inicioEventoInput = document.getElementById("inicioEvento");
   const finEventoInput = document.getElementById("finEvento");
 
+  // Carga los eventos guardados en localStorage
   let eventosDelCalendario = {};
   if (localStorage.getItem("eventosDelCalendario")) {
     eventosDelCalendario = JSON.parse(localStorage.getItem("eventosDelCalendario"));
   }
 
+  // Guarda los eventos en localStorage
   function guardarEventos() {
     localStorage.setItem("eventosDelCalendario", JSON.stringify(eventosDelCalendario));
   }
 
-  // Utilidad para obtener el div de un día por su número usando un for
+  // Busca el elemento del DOM correspondiente a un día
   function buscarElementoDia(dia) {
     let diaElemento = null;
     for (let el of diasDelMes.children) {
@@ -29,17 +31,20 @@ document.addEventListener("DOMContentLoaded", function () {
     return diaElemento;
   }
 
+  // van a servir para decir si estoy creando o editando un evento
   let diaActual = 1;
   let editando = false;
   let diaEditando = null;
   let indexEditando = null;
 
+  // este año junio arranca un lunes asi que hay 6 días vacíos antes del 1
   for (let i = 0; i < 6; i++) {
     const emptyDiv = document.createElement("div");
     emptyDiv.className = "dia dia-vacia";
     diasDelMes.appendChild(emptyDiv);
   }
 
+  // Crea los días del mes 
   for (let dia = 1; dia <= 30; dia++) {
     const divDia = document.createElement("div");
     divDia.className = "dia";
@@ -60,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
     diasDelMes.appendChild(divDia);
   }
 
+  // abre el formulario para agregar un evento
   botonAgregarEvento.addEventListener("click", () => {
     etiquetaEvento.classList.remove("etiqueta-oculto");
     document.getElementById("fechaEvento").value = diaActual;
@@ -68,10 +74,12 @@ document.addEventListener("DOMContentLoaded", function () {
     finEventoInput.min = "";
   });
 
+  // cierra el formulario
   cerrarEtiqueta.addEventListener("click", () => {
     etiquetaEvento.classList.add("etiqueta-oculto");
   });
 
+  // un evento no puede emepezar antes de que termine otro
   inicioEventoInput.addEventListener("input", function () {
     finEventoInput.min = inicioEventoInput.value;
     if (finEventoInput.value < inicioEventoInput.value) {
@@ -79,6 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // Maneja el envío del formulario para agregar o editar eventos
   formEvento.addEventListener("submit", function (e) {
     e.preventDefault();
     const nombre = document.getElementById("nombreEvento").value;
@@ -87,6 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const fin = finEventoInput.value;
 
     if (editando) {
+      // si cuando editas cambias de dia, el evento se mueve al nuevo dia que seleccionaste
       if (dia !== diaEditando) {
         eventosDelCalendario[diaEditando].splice(indexEditando, 1);
         if (eventosDelCalendario[diaEditando].length === 0) {
@@ -94,13 +104,13 @@ document.addEventListener("DOMContentLoaded", function () {
           const diaAnteriorElemento = buscarElementoDia(diaEditando);
           if (diaAnteriorElemento) diaAnteriorElemento.classList.remove("tiene-eventos");
         }
-
         if (!eventosDelCalendario[dia]) eventosDelCalendario[dia] = [];
         eventosDelCalendario[dia].push({ nombre, inicio, fin });
       } else {
         eventosDelCalendario[dia][indexEditando] = { nombre, inicio, fin };
       }
     } else {
+      // Agrega un nuevo evento
       if (!eventosDelCalendario[dia]) eventosDelCalendario[dia] = [];
       eventosDelCalendario[dia].push({ nombre, inicio, fin });
     }
@@ -115,16 +125,30 @@ document.addEventListener("DOMContentLoaded", function () {
     if (diaElemento) diaElemento.classList.add("tiene-eventos");
 
     if (dia === diaActual) mostrarEventosEnBarraLateral(dia);
+    mostrarMensajeExito("Evento guardado");
   });
 
+  // Muestra los eventos del día seleccionado en la barra lateral
   function mostrarEventosEnBarraLateral(dia) {
     const eventos = eventosDelCalendario[dia] || [];
     const contenedor = document.getElementById("eventosDelDia");
     contenedor.innerHTML = "";
 
+    // Crea el contenedor de lista de eventos 
     const lista = document.createElement("div");
     lista.className = "lista-eventos";
 
+    if (eventos.length === 0) {
+      // si no hay eventos muestra "No hay eventos para este día"
+      const aviso = document.createElement("div");
+      aviso.className = "evento-item";
+      aviso.textContent = "No hay eventos para este día";
+      lista.appendChild(aviso);
+      contenedor.appendChild(lista);
+      return;
+    }
+
+    // Crea cada evento del día
     eventos.forEach((evento, index) => {
       const elemento = document.createElement("div");
       elemento.className = "evento-item";
@@ -143,6 +167,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     contenedor.appendChild(lista);
 
+    // Para eliminar eventos
     document.querySelectorAll(".eliminar-evento").forEach(btn => {
       btn.addEventListener("click", () => {
         const dia = parseInt(btn.getAttribute("data-dia"));
@@ -163,6 +188,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
+    // Para editar los eventos
     document.querySelectorAll(".editar-evento").forEach(btn => {
       btn.addEventListener("click", () => {
         const dia = parseInt(btn.getAttribute("data-dia"));
